@@ -41,3 +41,25 @@ def data4q4():
     
 def get_geojson():
     return json.load(open('./data/us_states_v2.geojson', 'r'))
+
+# Question 5
+def data4q5_4train():
+    us_dise_ind5 = us_dise_ind[(us_dise_ind["question"] == 'Mortality from heart failure') &
+                (us_dise_ind["datavaluetypeid"] == 'NMBR')]
+
+    us_dise_ind5 = us_dise_ind5[['datavalue','stratificationcategory1', 'stratification1',
+                         'locationabbr','yearstart']]
+
+    us_dise_ind5[['gender', 'race']] = us_dise_ind5[['stratificationcategory1', 'stratification1']].pivot(columns='stratificationcategory1', values='stratification1').drop('Overall', axis=1)
+
+    us_dise_ind5.drop(labels=['stratificationcategory1', 'stratification1'], axis=1 ,inplace=True)
+
+    return us_dise_ind5.fillna(value='Unknown').reset_index(drop=True)
+
+
+def data4q5():
+    temp = data4q5_4train()
+    locabbr = list(temp['locationabbr'].unique())
+    race = list(temp['race'].unique())
+    gender = list(temp['gender'].unique())
+    return (locabbr, race, gender)
