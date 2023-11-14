@@ -31,3 +31,5 @@ Werkzeug==0.16.0
 seaborn
 optuna
 numpy
+scikit-learn
+joblib
