@@ -2,7 +2,6 @@ import dash
 
 app = dash.Dash(__name__)
 server = app.server
-
 from visual import layout_all
 from visual import plot_all
 from data.preprocess import data4q1, data4q2, data4q3, data4q4, data4q5

@@ -10,7 +10,6 @@ def create_Div(ext_data):
 
     Div_q5 = html.Div(
     [
-         # Dropdown box and line select button
         html.Div('Question 5', style={'font-size': '30px', 'font-weight': 'bold'}),
         html.Div(
                 [
@@ -18,6 +17,13 @@ def create_Div(ext_data):
                                style={'font-weight': 'bold', 'font-size': '30px',
                                        'text-align': 'center', 'marginTop': '10px',
                                        'marginBottom': '20px'}),
+                    html.Div([
+                        dcc.Dropdown(id='input-model',
+                                     options=['Random Forest Regression', 'Support Vector Regression'],
+                                     placeholder='Select Option For Model',
+                                     style={'marginTop': '5px','marginBottom': '5px', 'flex': 1}),
+                    ], style={'width': '80%', 'display': 'flex', 'margin': 'auto'}),
+
                     html.Div([
                             dcc.Input(
                                 id='input-future-year',
@@ -28,20 +34,19 @@ def create_Div(ext_data):
                         ], style={'width': '80%', 'display': 'flex', 'margin': 'auto',
                                    'font-size': '25px'}),
 
-                # Second line with input text windows
                     html.Div([
 
                         dcc.Dropdown(id='input-locationabbr',
                                      options=locabbr,
-                                     placeholder='Select option for Location (State)',
+                                     placeholder='Select Option For Location (State)',
                                      style={'marginTop': '5px','marginBottom': '5px', 'flex': 1}),
                         dcc.Dropdown(id='input-race',
                                      options=race,
-                                     placeholder='Select option for Race/Ethnicity',
+                                     placeholder='Select Option For Race/Ethnicity',
                                      style={'marginTop': '5px','marginBottom': '5px', 'flex': 1}),
                         dcc.Dropdown(id='input-gender',
                                      options=gender,
-                                     placeholder='Select option for Gender',
+                                     placeholder='Select Option For Gender',
                                      style={'marginTop': '5px','marginBottom': '5px', 'flex': 1}),
                         ], style={'width': '80%', 'display': 'flex', 'margin': 'auto'}),
 

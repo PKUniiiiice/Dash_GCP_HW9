@@ -1,9 +1,14 @@
 from joblib import load
 import pandas as pd
-model = load('./predict/best_model.joblib')
 
-def y_pred(future_year, locabbr, race, gender):
-    global model
+model_forest = load('./predict/best_model.joblib')
+model_svr = load('./predict/best_model_exp_v1_23049.joblib')
+def y_pred(model_name, future_year, locabbr, race, gender):
+    if model_name == 'Random Forest Regression':
+        model = model_forest
+    else:
+        model = model_svr
+
     newx = pd.DataFrame({'locationabbr': locabbr,
                          'yearstart': future_year,
                          'gender': gender,
